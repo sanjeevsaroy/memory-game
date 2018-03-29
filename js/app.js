@@ -19,7 +19,7 @@ const cards = [
   '<i class="fa fa-paper-plane-o"></i>',
   '<i class="fa fa-cube"></i>'
 ];
-
+const matchedCards = [];
 const deck = $('.deck');
 
 /*
@@ -44,7 +44,7 @@ displayCards();
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
-    var currentIndex = array.length, temporaryValue, randomIndex;
+    let currentIndex = array.length, temporaryValue, randomIndex;
 
     while (currentIndex !== 0) {
         randomIndex = Math.floor(Math.random() * currentIndex);
@@ -68,7 +68,35 @@ function shuffle(array) {
  *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
+let openedCard = null;
+
 $('.card').click(function() {
   let selectedCard = $(this);
+
   selectedCard.toggleClass('open show');
+
+  if (openedCard === null) {
+    openedCard = selectedCard;
+  }
+  else {
+    checkForMatch(selectedCard);
+    openedCard = null;
+  }
 });
+
+function checkForMatch(card) {
+  let card2 = openedCard;
+  let symbol1 = card2.find('i').attr('class').split(' ')[1];
+  let symbol2 = card.find('i').attr('class').split(' ')[1];
+
+  if (symbol1 === symbol2) {
+    card2.toggleClass('match');
+    card.toggleClass('match');
+
+    matchedCards.push(card, card2);
+  }
+  else {
+    card2.toggleClass('open show');
+    card.toggleClass('open show');
+  }
+}
