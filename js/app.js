@@ -73,14 +73,17 @@ let openedCard = null;
 $('.card').click(function() {
   let selectedCard = $(this);
 
-  selectedCard.toggleClass('open show');
+  // Disable any matched cards from being clicked
+  if (!selectedCard.hasClass('match')) {
+    selectedCard.toggleClass('open show');
 
-  if (openedCard === null) {
-    openedCard = selectedCard;
-  }
-  else {
-    checkForMatch(selectedCard);
-    openedCard = null;
+    if (openedCard === null) {
+      openedCard = selectedCard;
+    }
+    else {
+      checkForMatch(selectedCard);
+      openedCard = null;
+    }
   }
 });
 
