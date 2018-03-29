@@ -97,6 +97,7 @@ function checkForMatch(card) {
     card.toggleClass('match');
 
     matchedCards.push(card, card2);
+    checkForWin();
   }
   else {
     $(".card").css("pointer-events", "none");
@@ -106,5 +107,11 @@ function checkForMatch(card) {
 
       $(".card").css("pointer-events", "auto");
     }, 750);
+  }
+}
+
+function checkForWin() {
+  if (matchedCards.length === cards.length) {
+    alert("YOU HAVE WON!");
   }
 }
