@@ -39,6 +39,9 @@ function displayCards() {
   }
 }
 
+// Shuffle and display cards when the page loads
+displayCards();
+
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
     var currentIndex = array.length, temporaryValue, randomIndex;
@@ -65,6 +68,7 @@ function shuffle(array) {
  *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
-
-// Shuffle and display cards when the page loads
-displayCards();
+$('.card').click(function() {
+  let selectedCard = $(this);
+  selectedCard.toggleClass('open show');
+});
