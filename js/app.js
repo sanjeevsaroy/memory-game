@@ -99,7 +99,12 @@ function checkForMatch(card) {
     matchedCards.push(card, card2);
   }
   else {
-    card2.toggleClass('open show');
-    card.toggleClass('open show');
+    $(".card").css("pointer-events", "none");
+    setTimeout(function() {
+      card2.toggleClass('open show');
+      card.toggleClass('open show');
+
+      $(".card").css("pointer-events", "auto");
+    }, 750);
   }
 }
