@@ -74,7 +74,7 @@ $('.card').click(function() {
   let selectedCard = $(this);
 
   // Disable any matched cards from being clicked
-  if (!selectedCard.hasClass('match')) {
+  if (!selectedCard.hasClass('open')) {
     selectedCard.toggleClass('open show');
 
     if (openedCard === null) {
