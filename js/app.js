@@ -84,8 +84,8 @@ $('.card').click(function() {
       openedCard = selectedCard;
     }
     else {
-      checkForMatch(selectedCard);
       iterateNumOfMoves();
+      checkForMatch(selectedCard);
       openedCard = null;
     }
   }
