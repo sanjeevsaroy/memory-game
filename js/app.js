@@ -21,6 +21,7 @@ const cards = [
 ];
 const matchedCards = [];
 const deck = $('.deck');
+let numOfMoves = 0;
 
 /*
  * Display the cards on the page
@@ -82,6 +83,7 @@ $('.card').click(function() {
     }
     else {
       checkForMatch(selectedCard);
+      iterateNumOfMoves();
       openedCard = null;
     }
   }
@@ -114,4 +116,9 @@ function checkForWin() {
   if (matchedCards.length === cards.length) {
     alert("YOU HAVE WON!");
   }
+}
+
+function iterateNumOfMoves() {
+  numOfMoves++;
+  $('.moves').text(numOfMoves);
 }
