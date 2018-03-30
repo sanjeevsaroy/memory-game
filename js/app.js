@@ -116,7 +116,17 @@ function checkForMatch(card) {
 
 function checkForWin() {
   if (matchedCards.length === cards.length) {
-    alert("YOU HAVE WON!");
+    $('.modal').css('display', 'flex');
+
+    $('.modal-moves').text(numOfMoves);
+    let stars = $('.modal').find('.stars').children();
+
+    if (numOfMoves > MAX_MOVES_FOR_3_STARS) {
+      $(stars[2]).css("display", "none");
+    }
+    if (numOfMoves > MAX_MOVES_FOR_2_STARS) {
+      $(stars[1]).css("display", "none");
+    }
   }
 }
 
