@@ -22,6 +22,8 @@ const cards = [
 const matchedCards = [];
 const deck = $('.deck');
 let numOfMoves = 0;
+const MAX_MOVES_FOR_3_STARS = 10;
+const MAX_MOVES_FOR_2_STARS = 15;
 
 /*
  * Display the cards on the page
@@ -121,4 +123,13 @@ function checkForWin() {
 function iterateNumOfMoves() {
   numOfMoves++;
   $('.moves').text(numOfMoves);
+
+  let stars = $('.stars').children();
+
+  if (numOfMoves > MAX_MOVES_FOR_3_STARS && numOfMoves <= MAX_MOVES_FOR_2_STARS) {
+    $(stars[2]).css("visibility", "hidden");
+  }
+  else if (numOfMoves > MAX_MOVES_FOR_2_STARS) {
+    $(stars[1]).css("visibility", "hidden");
+  }
 }
