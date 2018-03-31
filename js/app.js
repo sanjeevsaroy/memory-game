@@ -148,6 +148,11 @@ function checkForWin() {
     $('.modal').css('display', 'flex');
 
     $('.modal-moves').text(numOfMoves);
+
+    let secsDisplay = (seconds > 9) ? seconds : '0' + seconds;
+    let minsDisplay = (minutes > 9) ? minutes : '0' + minutes;
+    $('.modal-time').text(minsDisplay + ":" + secsDisplay);
+
     let stars = $('.modal').find('.stars').children();
 
     if (numOfMoves > MAX_MOVES_FOR_3_STARS) {
