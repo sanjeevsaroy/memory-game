@@ -144,6 +144,6 @@ function iterateNumOfMoves() {
   }
 }
 
-$('.restart-btn').click(function() {
+$('.play-again-btn').click(function() {
   window.location.reload();
 });
