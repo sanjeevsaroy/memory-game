@@ -143,3 +143,7 @@ function iterateNumOfMoves() {
     $(stars[1]).css("visibility", "hidden");
   }
 }
+
+$('.restart-btn').click(function() {
+  window.location.reload();
+});
