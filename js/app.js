@@ -147,3 +147,7 @@ function iterateNumOfMoves() {
 $('.play-again-btn').click(function() {
   window.location.reload();
 });
+
+$('.restart').click(function() {
+  window.location.reload();
+});
