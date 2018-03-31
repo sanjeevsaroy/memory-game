@@ -24,6 +24,7 @@ const deck = $('.deck');
 let numOfMoves = 0;
 const MAX_MOVES_FOR_3_STARS = 10;
 const MAX_MOVES_FOR_2_STARS = 15;
+let timerStarted = false;
 
 /*
  * Display the cards on the page
@@ -74,6 +75,11 @@ function shuffle(array) {
 let openedCard = null;
 
 $('.card').click(function() {
+  if (!timerStarted) {
+    timer();
+    timerStarted = true;
+  }
+
   let selectedCard = $(this);
 
   // Disable any matched cards from being clicked
@@ -90,6 +96,28 @@ $('.card').click(function() {
     }
   }
 });
+
+let seconds = 0;
+let minutes = 0;
+let t;
+
+function timer() {
+  t = setTimeout(function() {
+
+    seconds++;
+    if (seconds >= 60) {
+      seconds = 0;
+      minutes++;
+    }
+
+    let secsDisplay = (seconds > 9) ? seconds : '0' + seconds;
+    let minsDisplay = (minutes > 9) ? minutes : '0' + minutes;
+
+    $('.timer').text(minsDisplay + ":" + secsDisplay);
+
+    timer();
+  }, 1000);
+}
 
 function checkForMatch(card) {
   let card2 = openedCard;
@@ -116,6 +144,7 @@ function checkForMatch(card) {
 
 function checkForWin() {
   if (matchedCards.length === cards.length) {
+    clearTimeout(t);
     $('.modal').css('display', 'flex');
 
     $('.modal-moves').text(numOfMoves);
