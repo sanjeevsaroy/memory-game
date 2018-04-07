@@ -133,9 +133,13 @@ function checkForMatch(card) {
   }
   else {
     $(".card").css("pointer-events", "none");
+
+    card2.toggleClass('incorrect');
+    card.toggleClass('incorrect');
+
     setTimeout(function() {
-      card2.toggleClass('open show');
-      card.toggleClass('open show');
+      card2.toggleClass('open show incorrect');
+      card.toggleClass('open show incorrect');
 
       $(".card").css("pointer-events", "auto");
     }, 750);
