@@ -52,6 +52,7 @@ h1 {
 }
 
 .deck .card {
+    position: relative;
     height: 125px;
     width: 125px;
     background: #2e3d49;
@@ -63,10 +64,12 @@ h1 {
     justify-content: center;
     align-items: center;
     box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
+    transform: rotateY(-180deg);
+    transition: all 0.3s;
 }
 
 .deck .card.open {
-    transform: rotateY(0);
+    transform: rotateY(0deg);
     background: #02b3e4;
     cursor: default;
 }
@@ -79,11 +82,31 @@ h1 {
     cursor: default;
     background: #02ccba;
     font-size: 33px;
+    animation: match 0.5s;
+}
+
+@keyframes match {
+    0%   {transform: rotate(0deg);}
+    20%  {transform: rotate(2.5deg);}
+    40%  {transform: rotate(-5deg);}
+    60%  {transform: rotate(5deg);}
+    80%  {transform: rotate(-2.5deg);}
+    100% {transform: rotate(0deg);}
 }
 
 .deck .card.incorrect {
     cursor: default;
     background: #F85C3E;
+    animation: shake 0.5s;
+}
+
+@keyframes shake {
+    0%   {right: 0px;}
+    20%  {right: 2px;}
+    40%  {right: -4px;}
+    60%  {right: 4px;}
+    80%  {right: -2px;}
+    100% {right: 0px;}
 }
 
 /*
