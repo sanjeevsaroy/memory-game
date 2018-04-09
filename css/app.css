@@ -38,7 +38,6 @@ h1 {
  */
 
 .deck {
-    width: 660px;
     min-height: 680px;
     background: linear-gradient(160deg, #02ccba 0%, #aa7ecd 100%);
     padding: 32px;
@@ -165,4 +164,37 @@ h1 {
 .play-again-btn {
   margin: 50px;
   padding: 15px 25px;
+}
+
+/*
+*
+* Media queries
+*
+*/
+
+@media screen and (max-width: 499px) {
+   .deck {
+     width: 90%;
+   }
+
+   .deck .card {
+     width: 22%;
+     height: 100px;
+   }
+}
+
+@media screen and (min-width: 500px) {
+   .deck {
+     width: 90%;
+   }
+
+   .deck .card {
+     width: 22%;
+   }
+}
+
+@media screen and (min-width: 700px) {
+   .deck {
+     width: 660px;
+   }
 }
