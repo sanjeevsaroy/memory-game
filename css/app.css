@@ -116,13 +116,19 @@ h1 {
     text-align: left;
     width: 345px;
     margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.stars, .moves-counter, .timer {
+  flex: 1;
 }
 
 .stars {
     margin: 0;
     padding: 0;
     display: inline-block;
-    margin: 0 5px 0 0;
 }
 
 .stars li {
@@ -130,13 +136,15 @@ h1 {
     display: inline-block;
 }
 
+.score-panel .moves-counter {
+  display: inline-block;
+}
+
 .score-panel .timer {
   display: inline-block;
-  margin: 0 50px;
 }
 
 .score-panel .restart {
-    float: right;
     cursor: pointer;
 }
 
@@ -181,6 +189,11 @@ h1 {
      width: 22%;
      height: 100px;
    }
+
+   .score-panel .restart {
+     padding: 10px 15px;
+     border: 2px solid #2e3d49;
+   }
 }
 
 @media screen and (min-width: 500px) {
@@ -191,10 +204,20 @@ h1 {
    .deck .card {
      width: 22%;
    }
+
+   .score-panel .restart {
+     padding: 10px 15px;
+     border: 2px solid #2e3d49;
+   }
 }
 
 @media screen and (min-width: 700px) {
    .deck {
      width: 660px;
+   }
+
+   .score-panel .restart {
+     padding: 0;
+     border: none;
    }
 }
