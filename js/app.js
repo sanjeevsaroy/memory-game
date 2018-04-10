@@ -89,7 +89,7 @@ function onCardSelected(card) {
   }
 }
 
-$('.card').click(function() {
+$('.deck').on('click', '.card', function() {
   onCardSelected($(this));
 });
 
@@ -208,10 +208,6 @@ function restartGame() {
   $('.card').remove();
 
   displayCards();
-
-  $('.card').click(function() {
-    onCardSelected($(this));
-  });
 }
 
 $('.play-again-btn').click(function() {
