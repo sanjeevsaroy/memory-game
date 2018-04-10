@@ -190,7 +190,7 @@ function restartGame() {
   // Reset the star ratings and its display
   let stars = $('.stars').children();
   $(stars[2]).css("visibility", "visible");
-  $(stars[2]).css("visibility", "hiddvisibleen");
+  $(stars[1]).css("visibility", "visible");
 
   // Reset the moves counter and its display
   numOfMoves = 0;
