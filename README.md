@@ -40,4 +40,4 @@ Of course you can! If you're in the middle of a game, click the restart button a
 
 ## Contribution
 
-Feel free to submit pull requests. 
+Feel free to submit pull requests.
