@@ -22,8 +22,8 @@ const cards = [
 const matchedCards = [];
 const deck = $('.deck');
 let numOfMoves = 0;
-const MAX_MOVES_FOR_3_STARS = 10;
-const MAX_MOVES_FOR_2_STARS = 15;
+const MAX_MOVES_FOR_3_STARS = 14;
+const MAX_MOVES_FOR_2_STARS = 19;
 let timerStarted = false;
 
 /*
