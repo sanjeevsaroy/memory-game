@@ -169,6 +169,11 @@ function iterateNumOfMoves() {
   numOfMoves++;
   $('.moves').text(numOfMoves);
 
+  determineStarRating();
+}
+
+// Determine the star rating 
+function determineStarRating() {
   let stars = $('.stars').children();
 
   if (numOfMoves > MAX_MOVES_FOR_3_STARS && numOfMoves <= MAX_MOVES_FOR_2_STARS) {
