@@ -181,7 +181,37 @@ function iterateNumOfMoves() {
 
 // Restart the game
 function restartGame() {
-  window.location.reload();
+
+  // Hide modal, in case it's showing
+  $('.modal').css('display', 'none');
+
+  gameStarted = false;
+
+  // Reset the star ratings and its display
+  let stars = $('.stars').children();
+  $(stars[2]).css("visibility", "visible");
+  $(stars[2]).css("visibility", "hiddvisibleen");
+
+  // Reset the moves counter and its display
+  numOfMoves = 0;
+  $('.moves').text(numOfMoves);
+
+  // Reset the time and its display
+  clearTimeout(t);
+  seconds = 0;
+  minutes = 0;
+  $('.timer').text("00:00");
+
+  // Remove all the current cards
+  matchedCards.length = 0;
+  openedCard = null;
+  $('.card').remove();
+
+  displayCards();
+
+  $('.card').click(function() {
+    onCardSelected($(this));
+  });
 }
 
 $('.play-again-btn').click(function() {
