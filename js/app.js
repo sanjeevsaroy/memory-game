@@ -172,7 +172,7 @@ function iterateNumOfMoves() {
   determineStarRating();
 }
 
-// Determine the star rating 
+// Determine the star rating
 function determineStarRating() {
   let stars = $('.stars').children();
 
@@ -215,10 +215,6 @@ function restartGame() {
   displayCards();
 }
 
-$('.play-again-btn').click(function() {
-  restartGame();
-});
-
-$('.restart').click(function() {
+$('.restart, .play-again-btn').on('click', function() {
   restartGame();
 });
