@@ -21,16 +21,18 @@ const cards = [
 ];
 const matchedCards = [];
 const deck = $('.deck');
-let numOfMoves = 0;
 const MAX_MOVES_FOR_3_STARS = 14;
 const MAX_MOVES_FOR_2_STARS = 19;
-let timerStarted = false;
 
-/*
- * Display the cards on the page
- *   - shuffle the list of cards using the provided "shuffle" method below
- *   - add each card's HTML to the page
- */
+let numOfMoves = 0;
+let gameStarted = false;
+let seconds = 0;
+let minutes = 0;
+let t;
+
+let openedCard = null;
+
+// Display the cards on the page
 function displayCards() {
   let shuffledCards = shuffle(cards);
 
@@ -61,26 +63,16 @@ function shuffle(array) {
     return array;
 }
 
+// Carry out actions on card click
+function onCardSelected(card) {
 
-/*
- * set up the event listener for a card. If a card is clicked:
- *  - display the card's symbol (put this functionality in another function that you call from this one)
- *  - add the card to a *list* of "open" cards (put this functionality in another function that you call from this one)
- *  - if the list already has another card, check to see if the two cards match
- *    + if the cards do match, lock the cards in the open position (put this functionality in another function that you call from this one)
- *    + if the cards do not match, remove the cards from the list and hide the card's symbol (put this functionality in another function that you call from this one)
- *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
- *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
- */
-let openedCard = null;
-
-$('.card').click(function() {
-  if (!timerStarted) {
+  // Start the timer if the game has just started
+  if (!gameStarted) {
     timer();
-    timerStarted = true;
+    gameStarted = true;
   }
 
-  let selectedCard = $(this);
+  let selectedCard = card;
 
   // Disable any matched cards from being clicked
   if (!selectedCard.hasClass('open')) {
@@ -95,12 +87,13 @@ $('.card').click(function() {
       openedCard = null;
     }
   }
+}
+
+$('.card').click(function() {
+  onCardSelected($(this));
 });
 
-let seconds = 0;
-let minutes = 0;
-let t;
-
+// Start a timer once the first card is selected
 function timer() {
   t = setTimeout(function() {
 
@@ -119,6 +112,7 @@ function timer() {
   }, 1000);
 }
 
+// Check if two cards match
 function checkForMatch(card) {
   let card2 = openedCard;
   let symbol1 = card2.find('i').attr('class').split(' ')[1];
@@ -132,6 +126,7 @@ function checkForMatch(card) {
     checkForWin();
   }
   else {
+    // Temporarily disable clicks to avoid multiple checks
     $(".card").css("pointer-events", "none");
 
     card2.toggleClass('incorrect');
@@ -146,6 +141,7 @@ function checkForMatch(card) {
   }
 }
 
+// Check if the user has won
 function checkForWin() {
   if (matchedCards.length === cards.length) {
     clearTimeout(t);
@@ -168,6 +164,7 @@ function checkForWin() {
   }
 }
 
+// Iterate the move counter on each card clicked
 function iterateNumOfMoves() {
   numOfMoves++;
   $('.moves').text(numOfMoves);
@@ -182,10 +179,15 @@ function iterateNumOfMoves() {
   }
 }
 
-$('.play-again-btn').click(function() {
+// Restart the game
+function restartGame() {
   window.location.reload();
+}
+
+$('.play-again-btn').click(function() {
+  restartGame();
 });
 
 $('.restart').click(function() {
-  window.location.reload();
+  restartGame();
 });
