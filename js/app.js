@@ -65,8 +65,8 @@ function shuffle(array) {
     return array;
 }
 
-// Carry out actions on card click
-function onCardSelected(card) {
+// Listens to click events on cards
+deck.on('click', '.card', function() {
 
   // Start the timer if the game has just started
   if (!gameStarted) {
@@ -74,7 +74,7 @@ function onCardSelected(card) {
     gameStarted = true;
   }
 
-  let selectedCard = card;
+  let selectedCard = $(this);
 
   // Disable any matched cards from being clicked
   if (!selectedCard.hasClass('open')) {
@@ -89,10 +89,6 @@ function onCardSelected(card) {
       openedCard = null;
     }
   }
-}
-
-deck.on('click', '.card', function() {
-  onCardSelected($(this));
 });
 
 // Start a timer once the first card is selected
