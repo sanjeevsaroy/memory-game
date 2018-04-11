@@ -19,8 +19,10 @@ const cards = [
   '<i class="fa fa-paper-plane-o"></i>',
   '<i class="fa fa-cube"></i>'
 ];
+
 const matchedCards = [];
 const deck = $('.deck');
+
 const MAX_MOVES_FOR_3_STARS = 14;
 const MAX_MOVES_FOR_2_STARS = 19;
 
@@ -89,7 +91,7 @@ function onCardSelected(card) {
   }
 }
 
-$('.deck').on('click', '.card', function() {
+deck.on('click', '.card', function() {
   onCardSelected($(this));
 });
 
@@ -106,7 +108,7 @@ function timer() {
     let secsDisplay = (seconds > 9) ? seconds : '0' + seconds;
     let minsDisplay = (minutes > 9) ? minutes : '0' + minutes;
 
-    $('.timer').text(minsDisplay + ":" + secsDisplay);
+    $('.timer').text(minsDisplay + ':' + secsDisplay);
 
     timer();
   }, 1000);
@@ -127,7 +129,7 @@ function checkForMatch(card) {
   }
   else {
     // Temporarily disable clicks to avoid multiple checks
-    $(".card").css("pointer-events", "none");
+    $('.card').css('pointer-events', 'none');
 
     card2.toggleClass('incorrect');
     card.toggleClass('incorrect');
@@ -136,7 +138,7 @@ function checkForMatch(card) {
       card2.toggleClass('open show incorrect');
       card.toggleClass('open show incorrect');
 
-      $(".card").css("pointer-events", "auto");
+      $('.card').css('pointer-events', 'auto');
     }, 750);
   }
 }
@@ -151,15 +153,15 @@ function checkForWin() {
 
     let secsDisplay = (seconds > 9) ? seconds : '0' + seconds;
     let minsDisplay = (minutes > 9) ? minutes : '0' + minutes;
-    $('.modal-time').text(minsDisplay + ":" + secsDisplay);
+    $('.modal-time').text(minsDisplay + ':' + secsDisplay);
 
     let stars = $('.modal').find('.stars').children();
 
     if (numOfMoves > MAX_MOVES_FOR_3_STARS) {
-      $(stars[2]).css("display", "none");
+      $(stars[2]).css('display', 'none');
     }
     if (numOfMoves > MAX_MOVES_FOR_2_STARS) {
-      $(stars[1]).css("display", "none");
+      $(stars[1]).css('display', 'none');
     }
   }
 }
@@ -177,10 +179,10 @@ function determineStarRating() {
   let stars = $('.stars').children();
 
   if (numOfMoves > MAX_MOVES_FOR_3_STARS && numOfMoves <= MAX_MOVES_FOR_2_STARS) {
-    $(stars[2]).css("visibility", "hidden");
+    $(stars[2]).css('visibility', 'hidden');
   }
   else if (numOfMoves > MAX_MOVES_FOR_2_STARS) {
-    $(stars[1]).css("visibility", "hidden");
+    $(stars[1]).css('visibility', 'hidden');
   }
 }
 
@@ -194,8 +196,8 @@ function restartGame() {
 
   // Reset the star ratings and its display
   let stars = $('.stars').children();
-  $(stars[2]).css("visibility", "visible");
-  $(stars[1]).css("visibility", "visible");
+  $(stars[2]).css('visibility', 'visible');
+  $(stars[1]).css('visibility', 'visible');
 
   // Reset the moves counter and its display
   numOfMoves = 0;
@@ -205,7 +207,7 @@ function restartGame() {
   clearTimeout(t);
   seconds = 0;
   minutes = 0;
-  $('.timer').text("00:00");
+  $('.timer').text('00:00');
 
   // Remove all the current cards
   matchedCards.length = 0;
