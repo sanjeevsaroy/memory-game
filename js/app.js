@@ -125,7 +125,13 @@ function checkForMatch(card) {
     card.toggleClass('match');
 
     matchedCards.push(card, card2);
-    checkForWin();
+
+    // Check if the game is finished
+    let isFinished = allMatchesFound();
+
+    if (isFinished) {
+      showModal();
+    }
   }
   else {
     // Temporarily disable clicks to avoid multiple checks
@@ -143,27 +149,30 @@ function checkForMatch(card) {
   }
 }
 
-// Check if the user has won
-function checkForWin() {
-  if (matchedCards.length === cards.length) {
-    clearTimeout(t);
-    $('.modal').css('display', 'flex');
+// Show the modal once the user has finished the game
+function showModal() {
+  clearTimeout(t);
+  $('.modal').css('display', 'flex');
 
-    $('.modal-moves').text(numOfMoves);
+  $('.modal-moves').text(numOfMoves);
 
-    let secsDisplay = (seconds > 9) ? seconds : '0' + seconds;
-    let minsDisplay = (minutes > 9) ? minutes : '0' + minutes;
-    $('.modal-time').text(minsDisplay + ':' + secsDisplay);
+  let secsDisplay = (seconds > 9) ? seconds : '0' + seconds;
+  let minsDisplay = (minutes > 9) ? minutes : '0' + minutes;
+  $('.modal-time').text(minsDisplay + ':' + secsDisplay);
 
-    let stars = $('.modal').find('.stars').children();
+  let stars = $('.modal').find('.stars').children();
 
-    if (numOfMoves > MAX_MOVES_FOR_3_STARS) {
-      $(stars[2]).css('display', 'none');
-    }
-    if (numOfMoves > MAX_MOVES_FOR_2_STARS) {
-      $(stars[1]).css('display', 'none');
-    }
+  if (numOfMoves > MAX_MOVES_FOR_3_STARS) {
+    $(stars[2]).css('display', 'none');
   }
+  if (numOfMoves > MAX_MOVES_FOR_2_STARS) {
+    $(stars[1]).css('display', 'none');
+  }
+}
+
+// Check if all matches have been found
+function allMatchesFound() {
+  return matchedCards.length === cards.length;
 }
 
 // Iterate the move counter on each card clicked
