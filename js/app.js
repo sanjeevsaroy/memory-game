@@ -23,8 +23,8 @@ const cards = [
 const matchedCards = [];
 const deck = $('.deck');
 
-const MAX_MOVES_FOR_3_STARS = 14;
-const MAX_MOVES_FOR_2_STARS = 19;
+const maxMovesForThreeStars = 14;
+const maxMovesForTwoStars = 19;
 
 let numOfMoves = 0;
 let gameStarted = false;
@@ -173,10 +173,10 @@ function showModal() {
 
   let stars = $('.modal').find('.stars').children();
 
-  if (numOfMoves > MAX_MOVES_FOR_3_STARS) {
+  if (numOfMoves > maxMovesForThreeStars) {
     $(stars[2]).css('display', 'none');
   }
-  if (numOfMoves > MAX_MOVES_FOR_2_STARS) {
+  if (numOfMoves > maxMovesForTwoStars) {
     $(stars[1]).css('display', 'none');
   }
 }
@@ -198,10 +198,10 @@ function iterateNumOfMoves() {
 function determineStarRating() {
   let stars = $('.stars').children();
 
-  if (numOfMoves > MAX_MOVES_FOR_3_STARS && numOfMoves <= MAX_MOVES_FOR_2_STARS) {
+  if (numOfMoves > maxMovesForThreeStars && numOfMoves <= maxMovesForTwoStars) {
     $(stars[2]).css('visibility', 'hidden');
   }
-  else if (numOfMoves > MAX_MOVES_FOR_2_STARS) {
+  else if (numOfMoves > maxMovesForTwoStars) {
     $(stars[1]).css('visibility', 'hidden');
   }
 }
