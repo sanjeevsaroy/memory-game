@@ -17,7 +17,7 @@ body {
 }
 
 body {
-    background: #ffffff url('../img/geometry2.png'); /* Background pattern from Subtle Patterns */
+    background: #fff url('../img/geometry2.png'); /* Background pattern from Subtle Patterns */
     font-family: 'Coda', cursive;
 }
 
@@ -34,7 +34,7 @@ h1 {
 }
 
 /*
- * Styles for the deck of cards
+ * Deck of cards
  */
 
 .deck {
@@ -56,7 +56,7 @@ h1 {
     width: 125px;
     background: #2e3d49;
     font-size: 0;
-    color: #ffffff;
+    color: #fff;
     border-radius: 8px;
     cursor: pointer;
     display: flex;
@@ -95,7 +95,7 @@ h1 {
 
 .deck .card.incorrect {
     cursor: default;
-    background: #F85C3E;
+    background: #f85c3e;
     animation: shake 0.5s;
 }
 
@@ -109,7 +109,7 @@ h1 {
 }
 
 /*
- * Styles for the Score Panel
+ * Score Panel
  */
 
 .score-panel {
@@ -121,8 +121,10 @@ h1 {
     align-items: center;
 }
 
-.stars, .moves-counter, .timer {
-  flex: 1;
+.stars,
+.moves-counter,
+.timer {
+    flex: 1;
 }
 
 .stars {
@@ -137,11 +139,11 @@ h1 {
 }
 
 .score-panel .moves-counter {
-  display: inline-block;
+    display: inline-block;
 }
 
 .score-panel .timer {
-  display: inline-block;
+    display: inline-block;
 }
 
 .score-panel .restart {
@@ -149,29 +151,29 @@ h1 {
 }
 
 /*
-* Styles for modal
+* Modal
 */
 .modal {
-  width: 100%;
-  height: 100%;
-  background-color: rgba(255, 255, 255, 0.9);
-  position: absolute;
-  top: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  display: none;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.9);
+    position: absolute;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    display: none;
 }
 
-.modal h1 {
-  font-size: 3em;
-  margin: 0;
+.modal-title {
+    font-size: 3em;
+    margin: 0;
 }
 
 .play-again-btn {
-  margin: 50px;
-  padding: 15px 25px;
+    margin: 50px;
+    padding: 15px 25px;
 }
 
 /*
@@ -182,42 +184,42 @@ h1 {
 
 @media screen and (max-width: 499px) {
    .deck {
-     width: 90%;
+       width: 90%;
    }
 
    .deck .card {
-     width: 22%;
-     height: 100px;
+       width: 22%;
+       height: 100px;
    }
 
    .score-panel .restart {
-     padding: 10px 15px;
-     border: 2px solid #2e3d49;
+       padding: 10px 15px;
+       border: 2px solid #2e3d49;
    }
 }
 
 @media screen and (min-width: 500px) {
    .deck {
-     width: 90%;
+       width: 90%;
    }
 
    .deck .card {
-     width: 22%;
+       width: 22%;
    }
 
    .score-panel .restart {
-     padding: 10px 15px;
-     border: 2px solid #2e3d49;
+       padding: 10px 15px;
+       border: 2px solid #2e3d49;
    }
 }
 
 @media screen and (min-width: 700px) {
    .deck {
-     width: 660px;
+       width: 660px;
    }
 
    .score-panel .restart {
-     padding: 0;
-     border: none;
+       padding: 0;
+       border: none;
    }
 }
