@@ -117,14 +117,11 @@ function timer() {
 // Check if two cards match
 function checkForMatch(card) {
   let card2 = openedCard;
-  let symbol1 = card2.find('i').attr('class').split(' ')[1];
-  let symbol2 = card.find('i').attr('class').split(' ')[1];
+  let symbol1 = card.find('i').attr('class').split(' ')[1];
+  let symbol2 = card2.find('i').attr('class').split(' ')[1];
 
   if (symbol1 === symbol2) {
-    card2.toggleClass('match');
-    card.toggleClass('match');
-
-    matchedCards.push(card, card2);
+    setCardsAsMatched(card, card2);
 
     // Check if the game is finished
     let isFinished = allMatchesFound();
@@ -134,19 +131,33 @@ function checkForMatch(card) {
     }
   }
   else {
-    // Temporarily disable clicks to avoid multiple checks
-    $('.card').css('pointer-events', 'none');
-
-    card2.toggleClass('incorrect');
-    card.toggleClass('incorrect');
-
-    setTimeout(function() {
-      card2.toggleClass('open show incorrect');
-      card.toggleClass('open show incorrect');
-
-      $('.card').css('pointer-events', 'auto');
-    }, 750);
+    showCardsAsIncorrect(card, card2);
   }
+}
+
+// Set two of the same cards as a match
+function setCardsAsMatched(card, card2) {
+  card.toggleClass('match');
+  card2.toggleClass('match');
+
+  matchedCards.push(card, card2);
+}
+
+// Display the selected cards as an incorrect guess
+function showCardsAsIncorrect(card, card2) {
+
+  // Temporarily disable clicks to avoid multiple checks
+  $('.card').css('pointer-events', 'none');
+
+  card.toggleClass('incorrect');
+  card2.toggleClass('incorrect');
+
+  setTimeout(function() {
+    card.toggleClass('open show incorrect');
+    card2.toggleClass('open show incorrect');
+
+    $('.card').css('pointer-events', 'auto');
+  }, 750);
 }
 
 // Show the modal once the user has finished the game
