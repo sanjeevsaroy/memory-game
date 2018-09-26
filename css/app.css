@@ -176,6 +176,11 @@ h1 {
     padding: 15px 25px;
 }
 
+.github-link {
+  display: block;
+  text-align: center;
+}
+
 /*
 *
 * Media queries
